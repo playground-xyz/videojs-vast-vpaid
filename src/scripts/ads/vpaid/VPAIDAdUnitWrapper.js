@@ -111,11 +111,22 @@ VPAIDAdUnitWrapper.prototype.waitForEvent = function (evtName, cb, context) {
 
   this.on(evtName, responseListener);
 
-  timeoutId = setTimeout(function () {
-    cb(new VASTError("on VPAIDAdUnitWrapper.waitForEvent, timeout while waiting for event '" + evtName + "'"));
-    timeoutId = null;
-    cb = utilities.noop;
-  }, this.options.responseTimeout);
+  // JM: We're troubleshooting an issue with a live creative that's under test for
+  // the VAST DriveBy - it appears that the VPAID content is failing to load 
+  // intermittently, which in turn prevents the AdStarted event from firing. Until
+  // resolved properly, this incredibly dangerous hack ensure we push on with
+  // rolling the video.
+  //
+  // https://trello.com/c/cstDgx9p/2749-continental-vast-troubleshoot-low-playback-rate
+  if (evtName === 'AdStarted') {
+    timeoutId = setTimeout(responseListener, 3000);
+  } else {
+    timeoutId = setTimeout(function () {
+      cb(new VASTError("on VPAIDAdUnitWrapper.waitForEvent, timeout while waiting for event '" + evtName + "'"));
+      timeoutId = null;
+      cb = utilities.noop;
+    }, this.options.responseTimeout);
+  }
 
   /*** Local functions ***/
   function sanityCheck(evtName, cb) {
