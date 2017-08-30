@@ -103,7 +103,6 @@ gulp.task('build-scripts', function() {
         packageCache: {}
       })
       .transform(babelify, {
-        presets: ['es2015'],
         sourceMaps: true,
         only: /VPAIDFLASHClient/
       })
