@@ -39,10 +39,6 @@ MediaFile.prototype.isSupported = function(){
     return !!vastUtil.findSupportedVPAIDTech(this.type);
   }
 
-  if (this.type === 'video/x-flv') {
-    return vastUtil.isFlashSupported();
-  }
-
   return true;
 };
 

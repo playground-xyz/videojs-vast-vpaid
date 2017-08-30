@@ -1,6 +1,5 @@
 'use strict';
 
-var babelify    = require('babelify');
 var browserify  = require('browserify');
 var buffer      = require('vinyl-buffer');
 var clone       = require('gulp-clone');
@@ -101,10 +100,6 @@ gulp.task('build-scripts', function() {
         paths: 'bower_components',
         cache: {},
         packageCache: {}
-      })
-      .transform(babelify, {
-        sourceMaps: true,
-        only: /VPAIDFLASHClient/
       })
       .bundle()
       .pipe(source(fileName))

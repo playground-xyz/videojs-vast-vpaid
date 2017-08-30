@@ -17,7 +17,6 @@
   "keywords": [
     "vpaid",
     "html5",
-    "flash",
     "vast",
     "videojs",
     "js",
@@ -34,7 +33,6 @@
     "frontend/demo/*"
   ],
   "dependencies": {
-    "VPAIDFLASHClient": "^1.0.2",
     "VPAIDHTML5Client": "git@github.com:playground-xyz/VPAIDHTML5Client.git"
   },
   "devDependencies": {
