@@ -118,15 +118,15 @@ VPAIDAdUnitWrapper.prototype.waitForEvent = function (evtName, cb, context) {
   // rolling the video.
   //
   // https://trello.com/c/cstDgx9p/2749-continental-vast-troubleshoot-low-playback-rate
-  if (evtName === 'AdStarted') {
+  /* if (evtName === 'AdStarted') {
     timeoutId = setTimeout(responseListener, 3000);
-  } else {
-    timeoutId = setTimeout(function () {
-      cb(new VASTError("on VPAIDAdUnitWrapper.waitForEvent, timeout while waiting for event '" + evtName + "'"));
-      timeoutId = null;
-      cb = utilities.noop;
-    }, this.options.responseTimeout);
-  }
+  } else { */
+  timeoutId = setTimeout(function () {
+    cb(new VASTError("on VPAIDAdUnitWrapper.waitForEvent, timeout while waiting for event '" + evtName + "'"));
+    timeoutId = null;
+    cb = utilities.noop;
+  }, this.options.responseTimeout);
+  // }
 
   /*** Local functions ***/
   function sanityCheck(evtName, cb) {

@@ -16,6 +16,7 @@ var utilities = require('../../utils/utilityFunctions');
 var logger = require ('../../utils/consoleLogger');
 
 function VPAIDIntegrator(player, settings) {
+
   if (!(this instanceof VPAIDIntegrator)) {
     return new VPAIDIntegrator(player);
   }
@@ -28,7 +29,7 @@ function VPAIDIntegrator(player, settings) {
   this.player = player;
   this.containerEl = createVPAIDContainerEl(player);
   this.options = {
-    responseTimeout: 5000,
+    responseTimeout: 10000,
     VPAID_VERSION: '2.0'
   };
   this.settings = settings;

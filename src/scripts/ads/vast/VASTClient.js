@@ -17,7 +17,7 @@ function VASTClient(options) {
     return new VASTClient(options);
   }
   var defaultOptions = {
-    WRAPPER_LIMIT: 5
+    WRAPPER_LIMIT: 10
   };
 
   options = options || {};
@@ -103,7 +103,7 @@ VASTClient.prototype._getVASTAd = function (adTagUrl, callback) {
     var vastTree;
     try {
       vastTree = xml.toJXONTree(xmlStr);
-      logger.debug ("built JXONTree from VAST response:", vastTree);
+      logger.debug("built JXONTree from VAST response:", vastTree);
 
       if(utilities.isArray(vastTree.ad)) {
         vastTree.ads = vastTree.ad;

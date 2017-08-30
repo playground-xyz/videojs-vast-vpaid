@@ -205,8 +205,6 @@ module.exports = function VASTPlugin(options) {
 
       playerUtils.once(player, ['vast.adStart', 'vast.adsCancel'], clearAdCancelTimeout);
 
-      console.log('adCancelTimeout', settings.adCancelTimeout);
-
       /*** local functions ***/
       function clearAdCancelTimeout() {
         if (adCancelTimeoutId) {
